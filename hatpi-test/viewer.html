@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Viewer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .nav-button { position: fixed; top: 50%; cursor: pointer; }
+        #prev { left: 10px; }
+        #next { right: 10px; }
+        img { display: block; margin: auto; max-width: 100%; max-height: 90vh; }
+    </style>
+</head>
+<body>
+    <img id="imageDisplay" src="">
+    <span id="prev" class="nav-button">❮</span>
+    <span id="next" class="nav-button">❯</span>
+
+    <script>
+        const images = [
+            'images/image-1.jpg',
+            'images/image-2.jpg',
+            'images/image-3.jpg'
+            // Continue with your list of images
+        ];
+
+        // Get image index from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        let currentIndex = parseInt(params.get('img')) || 0;
+
+        // Set image source
+        const imageDisplay = document.getElementById('imageDisplay');
+        imageDisplay.src = images[currentIndex];
+
+        // Navigation handlers
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            window.location.search = `?img=${currentIndex}`;
+        });
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            window.location.search = `?img=${currentIndex}`;
+        });
+    </script>
+</body>
+</html>

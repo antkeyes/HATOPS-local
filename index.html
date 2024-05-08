@@ -18,39 +18,27 @@
     </div>
 
     <script>
-        // Array of images
         const images = [
-            'images/image-1.jpg',
-            'images/image-2.jpg',
-            'images/image-3.jpg'
-            // Add all image filenames here
+            'hatpi-test/images/image-1.jpg',
+            'hatpi-test/images/image-2.jpg',
+            'hatpi-test/images/image-3.jpg'
         ];
-
-        // Function to insert image thumbnails into the page
+    
         function displayImages() {
             const container = document.querySelector('.row');
-            images.forEach(image => {
+            images.forEach((image, index) => {  // Make sure to pass the index here
                 container.innerHTML += `
                     <div class="col-md-4">
-                        <a href="./hatpi-test/${image}" target="_blank">
-                            <img src="./hatpi-test/${image}" class="img-thumbnail">
+                        <a href="./hatpi-test/viewer.html?img=${index}" target="_blank">
+                            <img src="${image}" class="img-thumbnail">
                         </a>
                     </div>
                 `;
             });
-
-        container.innerHTML += `
-            <div class="col-md-4">
-                <a href="viewer.html?img=${index}" target="_blank">
-                    <img src="./hatpi-test/${image}" class="img-thumbnail">
-                </a>
-            </div>
-        `;
-
         }
-
-        // Call the function to display images
+    
         window.onload = displayImages;
     </script>
+    
 </body>
 </html>
