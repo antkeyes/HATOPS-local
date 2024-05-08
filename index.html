@@ -38,6 +38,15 @@
                     </div>
                 `;
             });
+
+        container.innerHTML += `
+            <div class="col-md-4">
+                <a href="viewer.html?img=${index}" target="_blank">
+                    <img src="./hatpi-test/${image}" class="img-thumbnail">
+                </a>
+            </div>
+        `;
+
         }
 
         // Call the function to display images
